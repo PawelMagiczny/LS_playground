@@ -7,7 +7,9 @@ from skimage import color, io
 from skimage.exposure import rescale_intensity
 
 # read an image
-img = io.imread('Z:/dev/level-set/test.bmp')
+#img = io.imread('Z:/dev/level-set/test.bmp')
+img = io.imread('data/2d/jhony_test/test4.png')
+
 # convert the image to grayscale
 img_gray = color.rgb2gray(img)
 # normalize by the mean
@@ -38,7 +40,7 @@ def init_phi(x):
 plt.figure(1)
 phi = init_phi(img_smooth) # level set function (i.e. signed distance function)
 dt = 1 # learning rate
-n_iter = 50
+n_iter = 500
 for i in range(n_iter):
     plt.clf()
     dphi = np.gradient(phi)
