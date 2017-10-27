@@ -1,5 +1,8 @@
+'''
+This module is responsible for loading data
+'''
 from skimage import io
-import numpy
+import numpy as np
 
 def load_image(file_path):
     '''
@@ -11,8 +14,9 @@ def load_image(file_path):
     FORMATS:
     *png, *bmp
     '''
+    possible_formats = ['bmp', 'png']
+    assert file_path[-3:] in possible_formats
     img = io.imread(file_path)
-    assert type(img) == numpy.ndarray
+    assert isinstance(img, np.ndarray)
+    assert np.prod(img.shape) > 100
     return img
-
-
